@@ -1,11 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ML API</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <style>
+        /* Add your custom CSS styles here */
+        .login {
+            font-family: 'Arimo', sans-serif;
+            width: 300px;
+            margin: 0 auto;
+            margin-top: 50px;
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Hello World </h1>
+    <div class="login">
+        <h1>Boston House Price Prediction</h1>
+
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict')}}" method="post">
+            <input type="text" name="CRIM" placeholder="CRIM" required="required" /><br>
+            <input type="text" name="ZN" placeholder="ZN" required="required" /><br>
+            <input type="text" name="INDUS" placeholder="INDUS" required="required" /><br>
+            <input type="text" name="CHAS" placeholder="CHAS" required="required" /><br>
+            <input type="text" name="NOX" placeholder="NOX" required="required" /><br>
+            <input type="text" name="RM" placeholder="RM" required="required" /><br>
+            <input type="text" name="Age" placeholder="Age" required="required" /><br>
+            <input type="text" name="DIS" placeholder="DIS" required="required" /><br>
+            <input type="text" name="RAD" placeholder="RAD" required="required" /><br>
+            <input type="text" name="TAX" placeholder="TAX" required="required" /><br>
+            <input type="text" name="PTRATIO" placeholder="PTRATIO" required="required" /><br>
+            <input type="text" name="B" placeholder="B" required="required" /><br>
+            <input type="text" name="LSTAT" placeholder="LSTAT" required="required" /><br>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <br>
+        <br>
+        <!-- Display prediction text -->
+        {% if prediction_text %}
+        <div>
+            <p>{{ prediction_text }}</p>
+        </div>
+        {% endif %}
+    </div>
 </body>
+
 </html>
