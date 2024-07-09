@@ -5,7 +5,6 @@ import pandas as pd
 
 app = Flask(__name__)
 
-# Correcting the loading of the model and scaler
 model = pickle.load(open('regmodel.pkl', 'rb'))
 scaler = pickle.load(open('scaler.pkl', 'rb'))
 
